@@ -8,6 +8,8 @@ python:
 before_install:
   - pip install 'lander>=0.1.0,<0.2'
 script:
+  # Use Travis Python to generate the author list
+  - "make authors.tex"
   # Compile PDF using containerized lsst-texmf
   - docker run --rm -v `pwd`:/workspace -w /workspace lsstsqre/lsst-texmf:latest sh
     -c 'make'
